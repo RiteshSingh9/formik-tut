@@ -9,6 +9,7 @@ label {
     font-weight: bold;
     display: flex;
     margin-bottom: 5px;
+    margin-top: 20px;
 }
 
 input[type="text"],
@@ -23,7 +24,7 @@ input[type="email"] {
     background-image: none;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 button {
@@ -36,6 +37,7 @@ button {
     border-radius: 5.5px;
     margin-bottom: 2px;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin: 25px 0 10px 0;
 }
 
 button:hover {
@@ -46,4 +48,17 @@ button:hover {
     cursor: pointer;
     color: #fff;
     transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.errors {
+    color: rgb(220, 30, 30);
+    font-weight: 500;
+    font-family: "Courier New", Courier;
+    font-size: 15px;
+    font-stretch: condensed;
+}
+
+.errors > strong {
+    font-weight: 900;
+    font-size: 16px;
 }
