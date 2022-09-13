@@ -3,12 +3,15 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./css/SimpleForm.css";
 import * as Yup from "yup";
+import TextError from "./TextError";
 
 function NewSimpleForm() {
     const initialValues = {
         name: "Ritesh",
         email: "",
         channel: "",
+        comments: "",
+        address: "",
     };
 
     const onSubmit = (values) => {
@@ -30,33 +33,71 @@ function NewSimpleForm() {
             validationSchema={validationSchema}
         >
             <Form>
-                <label htmlFor="name"> Name </label>
-                <Field
-                    type="text"
-                    id="name"
-                    name="name"
-                />
-                <ErrorMessage name="name" />
+                <div className="form-group">
+                    <label htmlFor="name"> Name </label>
+                    <Field
+                        type="text"
+                        id="name"
+                        name="name"
+                    />
+                    <ErrorMessage name="name" component={TextError} />
+                </div>
 
-                <label htmlFor="email">E-mail</label>
-                <Field
-                    type="text"
-                    id="email"
-                    name="email"
-                />
-                <ErrorMessage name="email" />
+                <div className="form-group">
+                    <label htmlFor="email">E-mail</label>
+                    <Field
+                        type="text"
+                        id="email"
+                        name="email"
+                    />
+                    <ErrorMessage name="email">
+                        {
+                            (erroMsg) => {
+                                return <div className="errors">{erroMsg}</div>
+                            }
+                        }
+                    </ErrorMessage>
+                </div>
 
-                <label htmlFor="channel">Channel </label>
-                <Field
-                    type="text"
-                    id="channel"
-                    name="channel"
-                />
-                <ErrorMessage name="channel" />
+                <div className="form-group">
+                    <label htmlFor="channel">Channel </label>
+                    <Field
+                        type="text"
+                        id="channel"
+                        name="channel"
+                    />
+                    <ErrorMessage name="channel" component={TextError} />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="comments">Comments</label>
+                    <Field as='textarea' id="comments" name="comments" rows="5" />
+                    {/* alternative yuu can use component instead of as but their internal implementation is a bit different */}
+                    {/* <Field component='textarea' id="comments" name="comments" rows="5" /> */}
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="address">Address</label>
+                    {/* Render props pattern */}
+                    {/* custom form components hooked into formik */}
+                    <Field name="address">
+                        {
+                            (props) => {
+                                const { field, form, meta } = props;
+                                console.log('Render props ', props)
+                                return (<div>
+                                    <input type="text" name="address" {...field} />
+                                    {/* error handling */}
+                                    {meta.touched && meta.error ? <div className="errors">{meta.error}</div> : null}
+                                </div>)
+                            }
+                        }
+                    </Field>
+                </div>
 
                 <button type="submit">Submit</button>
-            </Form>
-        </Formik>
+            </Form >
+        </Formik >
     );
 }
 

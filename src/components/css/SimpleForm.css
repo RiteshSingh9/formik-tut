@@ -5,6 +5,10 @@ form {
     align-items: center;
 }
 
+.form-group {
+    width: calc(100% / 3);
+}
+
 label {
     font-weight: bold;
     display: flex;
@@ -13,9 +17,10 @@ label {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+textarea {
     display: block;
-    width: calc(100% / 3);
+    width: calc(100% - 30px);
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.428;
