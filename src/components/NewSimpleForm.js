@@ -16,6 +16,7 @@ function NewSimpleForm() {
             facebook: '',
             twitter: '',
         },
+        phoneNumbers: ['', ''],
     };
 
     const onSubmit = (values) => {
@@ -98,14 +99,27 @@ function NewSimpleForm() {
                         }
                     </Field>
                 </div>
+
                 <div className="form-group">
                     <label htmlFor="facebook">Facebook Profile</label>
                     <Field type="text" id="facebook" name="social.facebook" />
                 </div>
+
                 <div className="form-group">
                     <label htmlFor="twitter">Twitter Profile</label>
                     <Field type="text" id="twitter" name="social.twitter" />
                 </div>
+
+                <div className="form-group">
+                    <label htmlFor="phoneNumbers1">Phone Number 1</label>
+                    <Field type="number" id="phoneNumbers1" name="phoneNumbers[0]" />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="phoneNumbers2">Phoner Number 2</label>
+                    <Field type="number" id="phoneNumbers2" name="phoneNumbers[1]" />
+                </div>
+
 
                 <button type="submit">Submit</button>
             </Form >
