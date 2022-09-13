@@ -70,7 +70,8 @@ function SimpleForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
-                {formik.errors.name ? (
+                {/* if form fields is visited and there is error then only show the error message */}
+                {formik.touched.name && formik.errors.name ? (
                     <div className="errors">
                         <strong>Error : </strong>
                         {formik.errors.name}
@@ -86,7 +87,7 @@ function SimpleForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
-                {formik.errors.email ? (
+                {formik.touched.email && formik.errors.email ? (
                     <div className="errors">
                         <strong>Error : </strong> {formik.errors.email}
                     </div>
@@ -101,7 +102,7 @@ function SimpleForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
-                {formik.errors.channel ? (
+                {formik.touched.channel && formik.errors.channel ? (
                     <div className="errors">
                         <strong>Error : </strong>
                         {formik.errors.channel}
